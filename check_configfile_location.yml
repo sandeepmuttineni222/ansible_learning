@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Print ansible Config location
+      ansible.builtin.debug:
+        msg: "{{ ansible_config_file}}"
