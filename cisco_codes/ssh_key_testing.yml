@@ -2,7 +2,7 @@
 - name: Play book to connect with network devices
   hosts: all
   connection: ansible.netcommon.network_cli
-  vars_files: /home/sandeepmuthineni666/ansible_learning/ansible_learning/my_inventory/my_yaml_hosts_encrypt.yml
+  #vars_files: /home/sandeepmuthineni666/ansible_learning/ansible_learning/my_inventory/my_yaml_hosts_encrypt.yml
   vars:
     ansible_user: admin
     ansible_password: admin
