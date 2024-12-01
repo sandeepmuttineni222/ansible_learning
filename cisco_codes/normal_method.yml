@@ -3,8 +3,8 @@
   hosts: all
   connection: ansible.netcommon.network_cli
   vars:
-    # ansible_user: admin
-    # ansible_password: admin
+    #ansible_user: admin
+    #ansible_password: admin
     ansible_network_os: cisco.ios.ios
   gather_facts: true
   tasks:
