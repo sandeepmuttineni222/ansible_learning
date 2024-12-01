@@ -1,5 +1,5 @@
 [r1]
-Router_01 ansible_host=192.168.1.5
+Router_01 ansible_host=192.168.1.7 ansible_user=admin ansible_password=admin
 
 [r2]
-Router_02 ansible_host=192.168.1.15
+Router_02 ansible_host=192.168.1.15 ansible_user=admin ansible_password=admin

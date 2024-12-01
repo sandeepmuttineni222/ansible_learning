@@ -3,12 +3,12 @@
   hosts: all
   connection: ansible.netcommon.network_cli
   vars:
-    ansible_user: admin
-    ansible_password: admin
+    # ansible_user: admin
+    # ansible_password: admin
     ansible_network_os: cisco.ios.ios
   gather_facts: true
   tasks:
-  - name: run show version on remote devices
+  - name: Run show version on remote devices
     ansible.netcommon.cli_command:
       command: 'show version'
     register: output
@@ -16,7 +16,9 @@
   - name: Printing the output
     ansible.builtin.debug:
       msg:
-        - "{{ output }}"
+        - "{{ inventory_hostname }}"
+        - "{{ ansible_host }}"
+        # - "{{ output }}"
         - "{{ ansible_facts }}"
-    #when: output is success
-    
+        - "{{ ansible_facts.net_version }}"
+    # when: output is success
