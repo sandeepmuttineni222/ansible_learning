@@ -1,0 +1,22 @@
+---
+- name: Play book to connect with network devices
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  vars:
+    ansible_user: admin
+    ansible_password: admin
+    ansible_network_os: cisco.ios.ios
+  gather_facts: true
+  tasks:
+  - name: run show version on remote devices
+    ansible.netcommon.cli_command:
+      command: 'show version'
+    register: output
+
+  - name: Printing the output
+    ansible.builtin.debug:
+      msg:
+        - "{{ output }}"
+        - "{{ ansible_facts }}"
+    #when: output is success
+    

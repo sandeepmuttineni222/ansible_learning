@@ -1,0 +1,21 @@
+---
+name: Sandeep
+age: 25
+address:
+  village: Kamireddypadu
+  mandal: Ananthasagram
+  dist: SPSR Nellore
+  state: Andhra Pradesh
+  country: India
+Present_work:
+  company: TCS
+  work:
+    language: 
+      - python
+      - Ansible
+      - MSSQL
+      - Pandas
+      - Numpy
+    Role: Intelligent Automation Developer
+    location: Benguluru
+    
