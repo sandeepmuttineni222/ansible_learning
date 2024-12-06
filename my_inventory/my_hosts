@@ -11,3 +11,5 @@ r2
 [routers:vars]
 ansible_user=admin
 ansible_password=admin
+connection=ansible.netcommon.network_cli
+ansible_network_os= cisco.ios.ios

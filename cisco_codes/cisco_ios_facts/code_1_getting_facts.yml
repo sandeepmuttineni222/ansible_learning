@@ -1,0 +1,17 @@
+---
+- name: Play book to connect with network devices
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  vars:
+    ansible_timeout: 100
+  tasks:
+    - name: getting cisco facts
+      cisco.ios.ios_facts:
+        gather_subset: all
+
+    - name: debugging the output
+      ansible.builtin.debug:
+        msg:
+          - '{{ ansible_facts }}'
+          - '{{ ansible_facts.net_config }}'
+
