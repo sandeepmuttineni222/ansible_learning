@@ -1,0 +1,50 @@
+---
+- name: Play book to connect with network devices
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  gather_facts: true
+  vars:
+    sandeep: hello 
+
+  tasks:
+    - name: debugging the output normally 
+      ansible.builtin.debug:
+        msg:
+          - '{{ ansible_host }}'
+          - '{{ ansible_facts.net_version }}'
+          - '{{ ansible_facts.net_system }}'
+          - '{{ ansible_facts.net_hostname }}'
+          - '{{ ansible_facts.net_system }}'
+        
+
+    - name: debugging the output normally 
+      ansible.builtin.debug:
+        msg: |
+            {{ ansible_host }}
+            {{ ansible_facts.net_version }}
+            {{ ansible_facts.net_system }}
+            {{ ansible_facts.net_hostname }}
+            {{ ansible_facts.net_system }}
+
+    - name: debugging the output normally 
+      ansible.builtin.debug:
+        msg: |
+            host- {{ ansible_host }}
+            version- {{ ansible_facts.net_version }}
+            system- {{ ansible_facts.net_system }}
+            hostname- {{ ansible_facts.net_hostname }}
+            system- {{ ansible_facts.net_system }}
+
+    - name: debugging the output normally 
+      ansible.builtin.debug:
+        msg: >
+            {{ ansible_host }}
+            {{ ansible_facts.net_version }}
+            {{ ansible_facts.net_system }}
+            {{ ansible_facts.net_hostname }}
+            {{ ansible_facts.net_system }}
+    - name: debugging the output normally 
+      ansible.builtin.debug:
+        var: ansible_host
+        verbosity: 3
+

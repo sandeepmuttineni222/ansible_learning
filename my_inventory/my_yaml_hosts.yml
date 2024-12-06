@@ -5,7 +5,7 @@ all:
         r1:
           hosts:
             Router_01:
-              ansible_host: 192.168.146.232
+              ansible_host: 192.168.1.14
               ansible_password: !vault |
                 $ANSIBLE_VAULT;1.1;AES256
                 31623735373331656662663166343337616332326663623232346437353862376133363433616537
