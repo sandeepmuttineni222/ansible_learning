@@ -1,0 +1,32 @@
+---
+- name: Play book to connect with network devices
+  hosts: localhost
+  vars:
+    my_info: 
+      name1: Sandeep
+      name2: Harsha
+      name3: Bhavya
+      name4: Budamgiri
+      my_list:
+        - one
+          two
+        - three
+        - four
+        - five
+
+  tasks:
+    - name: Printing the value
+      ansible.builtin.debug:
+        msg: 
+          - "{{ my_info }}"
+
+    - name: to_json
+      ansible.builtin.copy:
+        content: "{{ my_info | to_nice_json(indent=8) }}"
+        dest: my_info.json
+  
+    - name: to_yaml
+      ansible.builtin.copy:
+        content: "{{ my_info | to_yaml }}"
+        dest: my_info.yml
+     

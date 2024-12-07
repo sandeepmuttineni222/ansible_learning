@@ -1,0 +1,31 @@
+---
+- name: Play book to connect with network devices
+  hosts: localhost
+  vars:
+    my_list2:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5 
+      
+    my_list1:
+      - one
+      - two
+      - three
+      - four
+      - five
+
+  tasks:
+    - name: Printing the value
+      ansible.builtin.set_fact:
+        #combined_list: "{{ my_list1 | zip(my_list2) | list }}"
+        combined_list: "{{ dict(my_list1 | zip(my_list2)) }}"
+    - name: debugging
+      ansible.builtin.debug:
+        msg: 
+          - "{{ combined_list }}"
+          - "{{ [0,3] | map('extract',my_list1 ) | list }}"
+          - "{{ '%y-%m-%d %H:%M:%S' | strftime }}"
+          - "{{ '%y-%m-%d %H:%M:%S' | strftime(utc=True) }}"
+     

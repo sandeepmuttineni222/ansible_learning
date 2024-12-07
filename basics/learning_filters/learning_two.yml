@@ -1,0 +1,29 @@
+---
+- name: Play book to connect with network devices
+  hosts: localhost
+  vars:
+    my_info: 
+      name1: Sandeep
+      name2: Harsha
+      name3: Bhavya
+      name4: Budamgiri
+      my_list:
+        - one
+          two
+        - three
+        - four
+        - five
+
+  tasks:
+    - name: checking ternary
+      ansible.builtin.set_fact:
+        owner_ship: "{{ owner_ship | default([]) + [ (item =='Harsha') | ternary('elder one','non elder') ]}}"
+        
+      with_items: "{{ my_info.values() }}"
+
+    - name: Printing the value
+      ansible.builtin.debug:
+        msg: 
+          - "{{ my_info | dict2items }}"
+  
+     

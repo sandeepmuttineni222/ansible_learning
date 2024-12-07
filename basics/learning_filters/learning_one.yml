@@ -1,0 +1,21 @@
+---
+- name: Play book to connect with network devices
+  hosts: localhost
+  vars:
+    my_info: 
+      name1: Sandeep
+      name2: Harsha
+      name3: Bhavya
+      name4: Budamgiri
+
+  tasks:
+    - name: Printing the value
+      ansible.builtin.debug:
+        msg: 
+          - "{{ name | default('Hello missing') }}"
+  
+    - name: testing omit
+      ansible.builtin.debug:
+        msg:
+          - "{{ namee | default(omit) }}"
+     
