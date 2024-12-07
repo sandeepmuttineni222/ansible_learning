@@ -1,0 +1,9 @@
+---
+- name: Play book to connect with network devices
+  hosts: localhost
+  connection: ansible.netcommon.network_cli
+  tasks:
+    - name: debugging the output
+      ansible.builtin.debug:
+        msg: '{{ ansible_facts }}'
+

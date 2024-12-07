@@ -1,0 +1,27 @@
+---
+- name: Play book to check ios_commands module
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  gather_facts: false
+  
+  tasks:
+    - name: run commands in ios devices
+      cisco.ios.ios_command:
+        commands: show version
+      register: command_output
+
+    - name: printing the command output
+      ansible.builtin.debug:
+        msg: "{{  command_output }}"
+
+    - name: using pyATS as parser
+      ansible.utils.cli_parse:
+        text: "{{ command_output.stdout }} | str"
+        parser:
+          name: ansible.netcommon.ntc_templates
+          command: show version
+        #set_fact: parsed_value
+      register: parsed_output
+    - name: printing the output
+      ansible.builtin.debug:
+        msg: "{{  parsed_output }}"
