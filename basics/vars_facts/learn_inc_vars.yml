@@ -1,0 +1,20 @@
+---
+- name: Play book to connect with network devices
+  hosts: localhost
+  
+  tasks:
+    - name: inclide vars
+      ansible.builtin.include_vars:
+        file: /home/sunny/Learning/ansible_learning/basics/vars_facts/from_inc_vars/my_info_vars.yml
+        name: my_info
+       
+    - name: debugging the output
+      ansible.builtin.debug:
+        msg: '{{ my_info }}'
+    - ansible.builtin.set_fact:
+        my_dict: "{{ my_dict | default([]) + [item] }}"
+      with_items: "{{ my_info.values() }}"
+
+    - ansible.builtin.debug:
+        msg: "{{ my_dict }}"
+           
