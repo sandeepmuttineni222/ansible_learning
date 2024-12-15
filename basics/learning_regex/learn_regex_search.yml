@@ -1,15 +1,21 @@
 ---
 - name: Play book to connect with network devices
-  hosts: all
+  hosts: r2
   connection: ansible.netcommon.network_cli
   vars:
-    ansible_timeout: 100
+  gather_facts: true
   tasks:
-    - name: getting cisco facts
-      cisco.ios.ios_facts:
-        gather_subset: all
+  - name: Run show version on remote devices
+    cisco.ios.ios_command:
+      commands: 'show version'
+    register: output
 
-    - name: debugging the output
-      ansible.builtin.debug:
-        msg:
-          - '{{ ansible_facts }}'
+  - name: Printing the output
+    ansible.builtin.debug:
+      msg:
+       # - "{{ output.stdout[0] }}"
+        - "{{ output.stdout[0] | regex_search('C[0-9]+\\-[A-Z]+[0-9]\\-[A-Z]')}}" #regex_search
+        - "{{ output.stdout[0] | regex_findall('C\\d+',multiline=true)}}" #regex_findall
+        - "{{ output.stdout[0] | regex_replace('C\\d+','MS954',multiline=true)}}" #regex_replace
+
+
