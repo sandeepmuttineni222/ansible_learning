@@ -1,0 +1,35 @@
+---
+- name: Play book to connect with network devices
+  hosts: localhost
+  connection: ansible.netcommon.network_cli
+  vars:
+    list1:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+    list2:
+      - 'a'
+      - 'b'
+      - 'c'
+      - 'd'
+      - 'f' 
+  gather_facts: true
+  tasks:
+  - name: Printing the output
+    ansible.builtin.debug:
+      msg: "{{ item.0 }}"
+    with_together:
+      - "{{ list1 }}"
+      - "{{ list2 }}"
+  - name: Printing the output
+    ansible.builtin.debug:
+      msg: "the value of {{item.0}} is {{item.1}}"
+    with_together:
+      - "{{ list1 }}"
+      - "{{ list2 }}"
+      
+       
+
+

@@ -1,0 +1,26 @@
+---
+- name: Play book to connect with network devices
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  gather_facts: true
+  tasks:
+  - name: Printing the output
+    ansible.builtin.debug:
+      msg: "{{ ansible_facts }}"
+
+  - name: Printing the output
+    ansible.builtin.debug:
+      msg: "{{ item }}"
+    with_items: "{{ ansible_facts.values() }}"
+
+  - name: Printing the output
+    ansible.builtin.debug:
+      msg: "{{ item }}"
+    with_dict: "{{ ansible_facts }}"
+  - name: Printing the output
+    ansible.builtin.debug:
+      msg: "{{ item }}"
+    loop : "{{ ansible_facts | dict2items }}"
+       
+
+
