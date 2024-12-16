@@ -1,0 +1,11 @@
+---
+- name: Play book to connect with network devices
+  hosts: localhost
+  vars:
+    my_name: 'Sandeep'
+  tasks:
+  - name: ipe lookup
+    ansible.builtin.debug:
+      msg: 
+        - "{{ lookup('pipe','date +%Y-%m-%d') }}"
+        - "{{ lookup('pipe','pwd') }}"

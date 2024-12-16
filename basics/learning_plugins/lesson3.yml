@@ -1,0 +1,10 @@
+---
+- name: Play book to connect with network devices
+  hosts: localhost
+  vars:
+    my_name: 'Sandeep'
+  tasks:
+  - name: file lookup
+    ansible.builtin.debug:
+      msg: 
+        - "{{ lookup( 'vars','{{my_name}}_Muttineni') }}"

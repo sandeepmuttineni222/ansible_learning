@@ -2,12 +2,11 @@
 - name: Play book to connect with network devices
   hosts: localhost
   connection: ansible.netcommon.network_cli
-  gather_facts: true
   tasks:
-  - name: Printing the output
+  - name: file lookup
     ansible.builtin.debug:
-      msg: "{{ ansible_facts.keys() }}"
-    when: 
-      - "{{ 'python' in  ansible_facts.keys() }}"
-      #- "{{ }}"
+      msg: 
+        - "{{ lookup('file','my_txt.txt')}}"
+        - "{{ lookup('file','my_txt.db', errors='ignore')}}"
+        - "{{ lookup('file','my_txt.db', errors='warn')}}"
     
