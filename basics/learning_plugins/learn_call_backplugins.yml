@@ -1,0 +1,13 @@
+---
+- name: Play book to connect with network devices
+  hosts: all
+  vars:
+    add_delay: 2
+  gather_facts: false
+  tasks:
+  - name: add delay
+    wait_for: 
+      timeout: "{{ add_delay }}"
+  - name: printing hostname
+    ansible.builtin.debug:
+      msg: "{{ inventory_hostname }}"
