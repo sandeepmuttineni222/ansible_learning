@@ -1,0 +1,28 @@
+---
+- name: Play book to check ios_commands module
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  gather_facts: false
+  tasks:
+    - name: run commands in ios devices
+      cisco.ios.ios_command:
+        commands:
+          - show version | i time
+      register: output
+
+    - name: debugging the output
+      ansible.builtin.debug:
+        msg: 
+         - "{{ output }}"
+
+    - name: run delegate to
+      cisco.ios.ios_command:
+        commands:
+          - show version | i time
+      delegate_to: Router_01
+      register: output1
+
+    - name: debugging the output
+      ansible.builtin.debug:
+        msg: 
+         - "{{ output1 }}"

@@ -1,0 +1,22 @@
+---
+- name: Play book to check ios_commands module
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  gather_facts: false
+  tasks:
+    - name: run commands in ios devices
+      cisco.ios.ios_command:
+        commands:
+          - show version | i time
+      check_mode: true
+      register: output
+
+    - name: debugging the output
+      ansible.builtin.debug:
+        msg: 
+         - "{{ output }}"
+
+    - name: debugging the output
+      ansible.builtin.debug:
+        msg: 
+         - "{{ ansible_check_mode }}"

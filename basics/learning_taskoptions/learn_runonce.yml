@@ -1,0 +1,19 @@
+---
+- name: Play book to check ios_commands module
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  gather_facts: false
+  tasks:
+    - name: checking run once task option
+      cisco.ios.ios_command:
+        commands:
+          - show ip int br
+      run_once: true
+      register: output
+
+    - name: debugging the output
+      ansible.builtin.debug:
+        msg: 
+         - "{{ output }}"
+      run_once: true
+
