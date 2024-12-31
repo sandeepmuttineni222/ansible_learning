@@ -1,0 +1,35 @@
+---
+- name: Play book to check ios_commands module
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  gather_facts: false
+  tasks:
+    - name: checking ignore errors task option
+      cisco.ios.ios_command:
+        commands:
+          - show ip int br
+      register: output
+
+    - name: debugging the output
+      ansible.builtin.debug:
+        msg: 
+         - "{{ output }}"
+
+    - name: checking ignore errors task option
+      #when: output is success
+      block:
+        - name: get cmd output
+          cisco.ios.ios_command:
+            commands:
+              - show version
+          register: output1
+        - name: debugging the output
+          ansible.builtin.debug:
+            msg: 
+            - "{{ output1 }}"
+      rescue:
+        - name: debug
+          ansible.builtin.debug:
+            msg: "got error"
+
+

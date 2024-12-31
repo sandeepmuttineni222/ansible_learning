@@ -1,0 +1,22 @@
+---
+- name: Play book to check ios_commands module
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  gather_facts: false
+  vars:
+    my_name: 'Sandeep'
+  tasks:
+    - name: check assert
+      ansible.builtin.assert:
+        that:
+          - my_name=='Sandeep'
+    - name: checking ignore errors task option
+      cisco.ios.ios_command:
+        commands:
+          - show ip int br
+      register: output
+    - name: debug
+      ansible.builtin.debug:
+        msg: "{{ output }}"
+
+

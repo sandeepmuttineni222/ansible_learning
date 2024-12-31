@@ -1,0 +1,26 @@
+---
+- name: Play book to check ios_commands module
+  hosts: all
+  connection: ansible.netcommon.network_cli
+  gather_facts: false
+  tasks:
+    - name: checking ignore errors task option
+      ansible.builtin.command:
+        cmd: pwd
+      register: output
+      delegate_to: localhost
+      notify: h1
+    
+    - name: debugging the output
+      ansible.builtin.debug:
+        msg: 
+         - "{{ ansible_user }}"
+  handlers:
+    - name: h1
+      cisco.ios.ios_command:
+        commands:
+          - show vsrsion
+      register: output1
+      delegate_to: Router_01
+
+
