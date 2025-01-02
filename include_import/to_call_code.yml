@@ -1,0 +1,8 @@
+---
+- name: printing name and surname
+  ansible.builtin.debug:
+    msg: "The name of the persion is {{name}} {{surname}}"
+
+- name: printing location
+  ansible.builtin.debug:
+    msg: "He stays at {{location}} with age {{age}}"
