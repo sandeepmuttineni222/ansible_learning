@@ -1,0 +1,9 @@
+---
+# tasks file for get_cmd_output
+- name: Printing the output
+  ansible.builtin.debug:
+    msg: 
+      - "{{ ansible_facts.keys() }}"
+      - "{{ ansible_facts.values() }}"
+      - "{{ owner_name }}"
+      - "{{ owner_surname }}"

@@ -1,0 +1,14 @@
+---
+- name: Play book to connect with network devices
+  hosts: localhost
+  vars:
+    owner_name: 'Sandeep'
+    owner_surname: 'Muthineni'
+  connection: ansible.netcommon.network_cli
+  gather_facts: true
+  tasks:
+  - name: Run the role
+    ansible.builtin.include_role: 
+      name: get_cmd_output
+
+    
