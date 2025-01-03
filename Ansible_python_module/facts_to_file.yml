@@ -1,0 +1,30 @@
+---
+- name: convert fatchs to file
+  hosts: r1
+  connection: ansible.netcommon.network_cli
+  gather_facts: true
+  tasks:
+    - name: printing ansible facts
+      ansible.builtin.debug:
+        msg:  
+          - "{{ ansible_facts}}"
+          - "{{ ansible_play_hosts }}"
+
+    - name: create_dictionar
+      ansible.builtin.set_fact:
+        facts_dict: "{{ facts_dict | default({}) | combine({ansible_facts.net_hostname :ansible_facts})}}"
+      
+    - name: print_dictionary
+      ansible.builtin.debug:
+        msg: "{{ facts_dict }}"
+    - name: fats to csv
+      facts_to_csv:
+        device_facts: "{{ facts_dict }}"
+        dest_csv_path: '/home/sunny/Learning/ansible_learning/Ansible_python_module'
+        dest_csv_file: 'sunny.csv'
+      register: output
+    - name: module output
+    
+      ansible.builtin.debug:
+        msg: "{{ output }}"
+    

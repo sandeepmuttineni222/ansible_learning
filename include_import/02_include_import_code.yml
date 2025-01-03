@@ -1,0 +1,24 @@
+---
+- name: To check include and import
+  hosts: localhost
+  vars:
+    name: 'Sandeep'
+    surname: 'Muttineni'
+    location: 'Nellore'
+    age: 30
+
+  tasks:
+    - name: 
+      ansible.builtin.set_fact:
+        age: 100
+    - name: calling the include tasks
+      ansible.builtin.include_tasks: to_call_code.yml
+      vars:
+        age: 25
+    - name: calling the import tasks
+      ansible.builtin.import_tasks: to_call_code.yml
+      vars:
+        age: 25
+
+- name: import plarbook
+  ansible.builtin.import_playbook: 01_include_import_code.yml
