@@ -57,6 +57,11 @@ Command: kubectl apply -k .
 -------------------------------------------------------------
 check installation logs:- kubectl logs -f deployments/awx-operator-controller-manager -c awx-manager
 
+#to check the pods
+minikube kubectl -- get pods -n awx
+
+
+
 Step5: Enable external access
 ############################################################
 kubectl port-forward service/awx-demo-service --address 0.0.0.0 30080:80
