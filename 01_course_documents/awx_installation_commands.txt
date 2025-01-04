@@ -83,3 +83,19 @@ minikube ip
 192.168.49.2  and the port from awx-server-service  80:31428 
 port number is 31428
 
+
+to restart the service if the AWX is not working 
+minikube stop
+minikube start --memory=4096 --cpus=2
+
+to check all the services of AWS is working or not working fine is 
+cmd is
+minikube kubectl -- get pods -n awx
+
+
+NAME                                               READY   STATUS             RESTARTS         AGE
+awx-operator-controller-manager-65b7d8867d-9lx94   2/2     Running            3 (14m ago)      40m
+awx-server-postgres-13-0                           1/1     Running            1 (15m ago)      34m
+awx-server-task-5cc499dd5d-ks4nn                   3/4     CrashLoopBackOff   16 (2m6s ago)    33m
+awx-server-web-769698f4bd-7v7bn                    2/3     CrashLoopBackOff   15 (2m12s ago)   31m
+
