@@ -1,3 +1,8 @@
+here without alias
+
+kubectl= minikube kubectl --
+
+
 Commands:
 Step1: Install Docker
 #############################################################
@@ -10,7 +15,11 @@ Step2: Install Minikube & start
 https://minikube.sigs.k8s.io/docs/start/
 
 minikube start --cpus=4 --memory=6g --addons=ingress
+
+************** Very important **************************
 set the alias:- alias kubectl="minikube kubectl --"
+
+
 
 Step3: Install AWX Operator
 #############################################################
