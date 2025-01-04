@@ -74,3 +74,12 @@ NAME                                              TYPE        CLUSTER-IP       E
 awx-operator-controller-manager-metrics-service   ClusterIP   10.110.142.69    <none>        8443/TCP       16m
 awx-server-postgres-13                            ClusterIP   None             <none>        5432/TCP       6m15s
 awx-server-service                                NodePort    10.107.196.162   <none>        80:31428/TCP   5m33s
+
+To get minikube ip
+run command
+
+minikube ip
+
+192.168.49.2  and the port from awx-server-service  80:31428 
+port number is 31428
+
